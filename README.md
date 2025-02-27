@@ -8,7 +8,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - Tailwind
 
 ## Function
-- 
+- Add event
+- Delete event
+- View event by month
+- List of upcoming events by day
+- Statistics of event types by month
 
 ## Deploy on Vercel
 
