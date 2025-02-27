@@ -14,6 +14,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - List of upcoming events by day
 - Statistics of event types by month
 
+## Coming soon
+- View event by month
+- Add recurring event
+
 ## Deploy on Vercel
 
 Link [Calendar Interview](https://calender-interview.vercel.app/month/2025/1)
