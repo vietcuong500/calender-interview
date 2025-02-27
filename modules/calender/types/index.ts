@@ -13,3 +13,8 @@ export interface CalendarEvent {
 export type CalendarEventMap = {
   [date: string]: CalendarEvent[]; // date format: YYYY-MM-DD
 };
+
+export type DayCalender = {
+  date: Date;
+  isCurrentMonth: boolean;
+}

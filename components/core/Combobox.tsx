@@ -1,15 +1,12 @@
 "use client";
-
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
@@ -41,7 +38,6 @@ export function Combobox(props: any) {
       </PopoverTrigger>
       <PopoverContent className="w-full p-0">
         <Command className="w-full">
-          {/* <CommandInput placeholder="Search framework..." className="h-9" /> */}
           <CommandList>
             <CommandEmpty>No framework found.</CommandEmpty>
             <CommandGroup>

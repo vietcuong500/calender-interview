@@ -1,4 +1,4 @@
-import { CalendarEvent, CalendarEventMap } from "../types";
+import { CalendarEvent, CalendarEventMap, DayCalender } from "../types";
 import { generateTimeIntervals } from "./generateTime";
 
 export { generateTimeIntervals };
@@ -10,7 +10,7 @@ export const getMonthData = (date: Date) => {
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
 
-  const days = [];
+  const days: DayCalender[] = [];
 
   const prevMonthLastDay = new Date(year, month, 0).getDate();
   const prevMonthDays = firstDay.getDay();

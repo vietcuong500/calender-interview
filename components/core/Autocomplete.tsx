@@ -16,13 +16,10 @@ import {
 import { Check, ChevronsUpDown, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Interface cho option trong Autocomplete
 interface AutocompleteOption {
   label: string;
   value: string;
 }
-
-// Props cho component Autocomplete
 interface AutocompleteProps {
   options: AutocompleteOption[];
   placeholder?: string;
@@ -46,29 +43,22 @@ const Autocomplete = ({
   disabled = false,
   allowClear = true,
 }: AutocompleteProps) => {
-  // State cho giá trị input
   const [inputValue, setInputValue] = useState(value);
-  // State cho việc mở/đóng dropdown
   const [open, setOpen] = useState(false);
-  // State cho các options được lọc
   const [filteredOptions, setFilteredOptions] =
     useState<AutocompleteOption[]>(options);
-  // State cho option được chọn
   const [selectedOption, setSelectedOption] =
     useState<AutocompleteOption | null>(
       options.find((option) => option.value === value) || null
     );
 
-  // Tham chiếu đến input element
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Tìm label từ value
   const getOptionLabel = (value: string) => {
     const option = options.find((option) => option.value === value);
     return option ? option.label : value;
   };
 
-  // Xử lý khi input thay đổi
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setInputValue(newValue);
@@ -77,7 +67,6 @@ const Autocomplete = ({
       onChange(newValue);
     }
 
-    // Lọc options dựa trên giá trị input
     const filtered = options.filter(
       (option) =>
         option.label.toLowerCase().includes(newValue.toLowerCase()) ||
@@ -85,26 +74,21 @@ const Autocomplete = ({
     );
     setFilteredOptions(filtered);
 
-    // Mở dropdown nếu có giá trị và có kết quả
     if (newValue && filtered.length > 0) {
       setOpen(true);
     }
 
-    // Reset selected option nếu input trống
     if (!newValue) {
       setSelectedOption(null);
     }
   };
 
-  // Xử lý khi chọn một option
   const handleSelectOption = (option: AutocompleteOption) => {
     setSelectedOption(option);
     setInputValue(option.label);
 
-    // Đặt timeout để đảm bảo dropdown đóng trước khi focus lại vào input
     setTimeout(() => {
       setOpen(false);
-      // Focus lại vào input sau khi chọn option
       if (inputRef.current) {
         inputRef.current.focus();
       }
@@ -119,7 +103,6 @@ const Autocomplete = ({
     }
   };
 
-  // Xử lý khi xóa giá trị
   const handleClear = (e: React.MouseEvent) => {
     e.stopPropagation();
     setSelectedOption(null);
@@ -129,18 +112,15 @@ const Autocomplete = ({
       onChange("");
     }
 
-    // Focus lại vào input sau khi xóa
     if (inputRef.current) {
       inputRef.current.focus();
     }
   };
 
-  // Cập nhật filtered options khi options thay đổi
   useEffect(() => {
     setFilteredOptions(options);
   }, [options]);
 
-  // Cập nhật inputValue khi value prop thay đổi
   useEffect(() => {
     if (value !== inputValue) {
       setInputValue(value ? getOptionLabel(value) : "");
@@ -148,12 +128,11 @@ const Autocomplete = ({
         options.find((option) => option.value === value) || null
       );
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, options]);
 
-  // Xử lý sự kiện đóng Popover
   const handleOpenChange = (isOpen: boolean) => {
     setOpen(isOpen);
-    // Khi dropdown đóng, focus lại vào input
     if (!isOpen && inputRef.current) {
       inputRef.current.focus();
     }
@@ -192,7 +171,7 @@ const Autocomplete = ({
                   onClick={handleClear}
                   disabled={disabled}
                   className="h-full px-2 hover:bg-transparent"
-                  tabIndex={-1} // Tránh bị focus khi tab
+                  tabIndex={-1} 
                 >
                   <X className="h-4 w-4 text-gray-500" />
                 </Button>
@@ -205,7 +184,7 @@ const Autocomplete = ({
                 onClick={() => setOpen(!open)}
                 disabled={disabled}
                 className="h-full px-2 hover:bg-transparent"
-                tabIndex={-1} // Tránh bị focus khi tab
+                tabIndex={-1}
               >
                 <ChevronsUpDown className="h-4 w-4 text-gray-500" />
               </Button>

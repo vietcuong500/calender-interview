@@ -23,7 +23,7 @@ export const DayItem = (props: DayItemProps) => {
   );
 
   const [isOpen, setIsOpen] = useState(false);
-  const [eventActive, setEventActive] = useState(null);
+  const [eventActive, setEventActive] = useState<any>(null);
   const [referenceElement, setReferenceElement] = useState(null);
 
   const router = useRouter();

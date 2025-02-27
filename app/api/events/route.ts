@@ -3,9 +3,9 @@ import {
   deleteEvent,
   getEvents,
 } from "@/modules/calender/services";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function POST(request: NextResponse) {
+export async function POST(request) {
   try {
     const body = await request.json();
     const event = await createEvent({
@@ -23,7 +23,7 @@ export async function POST(request: NextResponse) {
   }
 }
 
-export async function DELETE(request: NextResponse) {
+export async function DELETE(request) {
   try {
     const body = await request.json();
     const event = await deleteEvent({
@@ -36,7 +36,7 @@ export async function DELETE(request: NextResponse) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(request) {
   const searchParams = request.nextUrl.searchParams;
   const year = searchParams.get("year");
   const month = searchParams.get("month");

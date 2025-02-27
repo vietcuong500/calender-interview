@@ -16,8 +16,6 @@ export const TimeBreakdown = (props: TimeBreakdownProps) => {
     };
   });
 
-  console.log(total);
-
   return (
     <div className="p-4 flex flex-col gap-4">
       <p className="text-sm font-medium text-neutral-900">Time breakdown</p>

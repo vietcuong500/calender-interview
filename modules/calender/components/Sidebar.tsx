@@ -1,11 +1,10 @@
-import { Category, Event } from "@prisma/client";
 import { CalenderOverview } from "./CalenderOverview";
 import Image from "next/image";
 import { TimeBreakdown } from "./TimeBreakdown";
 
 type SidebarProps = {
-  events: Event[];
-  categories: Category[];
+  events: any;
+  categories: any;
   year: string;
   month: string;
 };
@@ -13,7 +12,7 @@ type SidebarProps = {
 export const Sidebar = (props: SidebarProps) => {
   const { events, year, month, categories } = props;
   const eventsUpcoming = events.filter(
-    (el) =>
+    (el: any) =>
       el.day === new Date().getDate() && el.month === new Date().getMonth()
   );
   return (
@@ -39,7 +38,7 @@ export const Sidebar = (props: SidebarProps) => {
             <div
               key={idx}
               style={{
-                backgroundColor: event.category?.color ?? "#eee",
+                backgroundColor: event?.category?.color ?? "#eee",
               }}
               className=" rounded-md px-3 py-2 "
             >
@@ -54,7 +53,9 @@ export const Sidebar = (props: SidebarProps) => {
                 {event.participants.map((el, elIdx) => (
                   <div
                     key={el.user.id}
-                    className={`w-7 h-7 overflow-hidden border-2 border-green-50 rounded-full bg-neutral-600 ${elIdx !== 0 ? '-ml-2' : ''}`}
+                    className={`w-7 h-7 overflow-hidden border-2 border-green-50 rounded-full bg-neutral-600 ${
+                      elIdx !== 0 ? "-ml-2" : ""
+                    }`}
                   >
                     <Image
                       width={28}

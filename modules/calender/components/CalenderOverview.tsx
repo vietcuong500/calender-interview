@@ -24,7 +24,7 @@ export const CalenderOverview = (props: any) => {
           <div
             key={index}
             className={`cursor-pointer font-medium rounded-full h-8 w-8 flex items-center justify-center ${
-              isToday(day.date) ? "bg-blue-800 text-white" : "bg-transparent"
+              isToday(day?.date) ? "bg-blue-800 text-white" : "bg-transparent"
             } ${day.isCurrentMonth ? " " : "text-neutral-400"} `}
           >
             <p className="text-xs text-center">{formatDate(day.date)}</p>
