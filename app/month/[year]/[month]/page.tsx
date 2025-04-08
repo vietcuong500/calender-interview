@@ -28,6 +28,7 @@ export default async function Home({ params }: any) {
 
   return (
     <div className="flex flex-row gap-4 bg-neutral-100 p-4">
+      <p>linh tinh</p>
       <Sidebar
         events={events}
         categories={categories}
